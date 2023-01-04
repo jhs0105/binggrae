@@ -1,0 +1,231 @@
+@import "vars";
+@import "mixins";
+// @붙이면 가져올수 있다. (import할때는 제목의 언더바를 붙이지 않는다)
+
+@font-face {
+  font-family: "Binggrae";
+  src: url("../fonts/Binggrae.woff");
+}
+@font-face {
+  font-family: "Binggrae-Bold";
+  src: url("../fonts/Binggrae-Bold.woff");
+}
+
+body {
+  font-family: "Binggrae", "Roboto", "Noto Sans KR", "돋움";
+  color: #111;
+  font-size: 18px;
+  overflow-x: hidden;
+  //background-color: green;
+  // min-height: 3000px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+//이미지는 글자처럼 처리된다.
+img {
+  vertical-align: top;
+  //이걸쓰면 이미지 위로 붙여 준다. 안쓰면 이미가 살짝 벌어짐
+}
+
+button,
+input {
+  background: none;
+  border: none;
+  outline: none;
+  color: inherit;
+  font-family: inherit;
+}
+
+.container {
+  width: 1300px;
+  margin: 0 auto;
+}
+
+#header {
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 50px;
+  height: 120px;
+  transition: all 0.5s ease;
+  &.slideDown {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(1, 1, 1, 0.1);
+    height: 480px;
+    border-radius: 0 0 50px 50px;
+    &:before {
+      content: "";
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      top: 120px;
+      left: 0;
+      background-color: #ccc;
+    }
+    nav {
+      > ul {
+        .depth02 {
+          visibility: visible;
+          opacity: 1;
+          transition: all 0.5s ease 0.3s;
+          pointer-events: auto;
+        }
+      }
+    }
+  }
+  h1 {
+    height: 120px;
+    display: flex;
+    align-items: center;
+  }
+  nav {
+    &.on {
+      display: none;
+    }
+    > ul {
+      display: flex;
+      position: relative;
+      .depth01 {
+        font-weight: 600;
+        font-size: 16px;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        padding-right: 50px;
+      }
+      .depth02 {
+        visibility: hidden;
+        font-size: 14px;
+        padding: 10px 0;
+        position: absolute;
+        pointer-events: none;
+        opacity: 0;
+        color: #333;
+        li {
+          padding: 10px 0;
+        }
+      }
+    }
+  }
+  #util {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    .trans {
+      position: relative;
+      i {
+        margin-left: 5px;
+        font-size: 16px;
+      }
+      ul {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 20px;
+        li {
+          line-height: 1.5;
+        }
+      }
+    }
+    .btn-all {
+      width: 50px;
+      height: 50px;
+      position: relative;
+      margin-left: 40px;
+      &.on {
+        span {
+          &:nth-child(1) {
+            top: 25px;
+            transform: rotate(45deg);
+          }
+          &:nth-child(3) {
+            top: 25px;
+            transform: rotate(-45deg);
+          }
+          &:nth-child(2) {
+            transform: translateX(-100px);
+            opacity: 0;
+          }
+        }
+      }
+      span {
+        position: absolute;
+        width: 30px;
+        height: 2px;
+        background-color: #111;
+        transition: all 0.25s ease;
+        &:nth-child(1) {
+          top: 15px;
+        }
+        &:nth-child(2) {
+          top: 25px;
+        }
+        &:nth-child(3) {
+          top: 35px;
+        }
+      }
+    }
+  }
+  .menuslide {
+    &.on {
+      display: block;
+    }
+    display: none;
+    position: absolute;
+    z-index: -1;
+    background-image: url("../images/pc_ham_bg.png");
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: right 100%;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+
+    > ul {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 0 20px;
+      > li {
+        width: calc(100% / 5 - 20px);
+        border: 1px solid #ccc;
+        background-color: #fff;
+        margin: 0 10px;
+        border-radius: 20px;
+        height: 450px;
+        box-sizing: border-box;
+        padding: 50px 20px;
+        font-size: 20px;
+        font-weight: 700;
+        transition: all 0.25s ease;
+        &:hover {
+          box-shadow: 0px 0px 10px 2px rgba(1, 1, 1, 0.2);
+          transform: translateY(-10px);
+          color: #f00;
+        }
+        .depth02 {
+          font-size: 16px;
+          color: #333;
+          font-weight: 400;
+          padding: 10px 0;
+          li {
+            line-height: 2;
+          }
+        }
+      }
+    }
+  }
+}
