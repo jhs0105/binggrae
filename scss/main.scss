@@ -7,9 +7,13 @@
   height: 110vh;
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: 50% 50%;
   .main-box {
     text-align: center;
     transform: translateY(50%);
+    img {
+      width: 100%;
+    }
     .search {
       width: 60%;
       margin: auto;
@@ -69,7 +73,7 @@
   }
   .happy-slide {
     padding-top: 50px;
-    width: 1300px;
+    width: 85%;
     overflow: hidden;
     li {
       transition: all 0.25s ease;
@@ -90,7 +94,7 @@
       }
       a {
         img {
-          width: 200px;
+          width: 100%;
         }
         span {
           display: flex;
@@ -111,11 +115,11 @@
     top: 50%;
     .nav-prev {
       position: absolute;
-      left: 80px;
+      left: 50px;
     }
     .nav-next {
       position: absolute;
-      right: 80px;
+      right: 50px;
     }
   }
 }
@@ -132,7 +136,7 @@
     font-weight: 900;
   }
   .brand-slide {
-    width: 1300px;
+    width: 85%;
     padding: 50px 20px 0 20px;
     overflow: hidden;
     li {
@@ -162,11 +166,11 @@
           }
         }
       }
-
       .img-box {
         text-align: center;
         margin-top: -30px;
         img {
+          width: 90%;
           transform: translateY(45px);
           transition: all 0.25s ease;
         }
@@ -213,11 +217,11 @@
     top: 55%;
     .nav-prev {
       position: absolute;
-      left: 80px;
+      left: 50px;
     }
     .nav-next {
       position: absolute;
-      right: 80px;
+      right: 50px;
     }
   }
 }
@@ -234,7 +238,7 @@
     padding-bottom: 50px;
   }
   .contents-box {
-    width: 1300px;
+    width: 85%;
     box-sizing: border-box;
     padding: 50px;
     border-radius: 30px;
@@ -243,9 +247,9 @@
       display: flex;
       justify-content: space-between;
       .txt {
-        width: 48%;
-        aspect-ratio: 1.9;
-        background-image: 100%;
+        flex-basis: 48%;
+        height: 300px;
+        background-size: cover;
         background-position: 50% 50%;
         border-radius: 30px;
         box-sizing: border-box;
@@ -275,7 +279,7 @@
         background-image: url("../images/mailbox.png");
         span {
           display: flex;
-          margin-top: 70px;
+          margin-top: 50px;
           background-color: #e0462e;
           width: 150px;
           justify-content: center;
@@ -297,7 +301,9 @@
         margin-left: auto;
         border: 1px solid #ccc;
         font-size: 16px;
-        padding: 12px 50px;
+        width: 120px;
+        text-align: center;
+        padding: 12px 0;
         border-radius: 30px;
         &:hover {
           background-color: #e0462e;
@@ -311,6 +317,7 @@
       flex-wrap: wrap;
       justify-content: space-between;
       li {
+        line-height: 1.25;
         flex-basis: 45%;
         padding: 30px 20px;
         border-radius: 30px;
@@ -332,7 +339,7 @@
     padding-bottom: 50px;
   }
   .report-box {
-    width: 1300px;
+    width: 85%;
     ul {
       display: flex;
       justify-content: space-between;
@@ -341,6 +348,7 @@
         border-radius: 30px;
         flex-basis: 48%;
         box-shadow: inset 0 0 10px #ccc;
+        line-height: 1.3;
         a {
           display: flex;
           flex-direction: column;
@@ -372,33 +380,32 @@
 #footer {
   padding: 50px;
   background-color: #1b1b1b;
-  display: flex;
-  justify-content: space-between;
   color: rgba(255, 255, 255, 0.7);
   .address {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
     img {
       margin-bottom: 20px;
     }
     p {
       line-height: 2;
-      font-size: 16px;
     }
-    .copyright {
-      margin-top: 100px;
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.5);
-    }
-  }
-  .sns {
-    font-size: 16px;
-    display: flex;
-    flex-direction: column;
     .map {
-      display: flex;
-      margin-left: auto;
       a:nth-child(1) {
         margin-right: 30px;
       }
+    }
+  }
+  .sns {
+    margin-top: 100px;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    .copyright {
+      font-size: 14px;
+      color: #555;
+      font-weight: 700;
     }
     .icons {
       margin-top: auto;
@@ -417,7 +424,6 @@
             height: 70px;
             align-items: center;
             justify-content: center;
-
             box-shadow: inset 1px 3px 10px rgba(255, 255, 255, 0.05);
           }
           &.flag {
@@ -435,6 +441,269 @@
                 font-weight: 900;
               }
             }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 1080px) {
+  #main-visual {
+    height: 90vh;
+    .main-box {
+      .search {
+        height: clamp(50px, 7.4vw, 80px);
+        width: 70%;
+        button {
+          height: clamp(40px, 6vw, 60px);
+        }
+      }
+    }
+  }
+  #happy {
+    padding: clamp(50px, 14vw, 150px);
+    .happy-slide {
+      width: 80%;
+    }
+  }
+  #complain {
+    .contents-box {
+      .contents {
+        flex-direction: column;
+        .txt {
+          height: 0;
+          aspect-ratio: 2.5;
+        }
+        .mail-box {
+          margin-bottom: 20px;
+          span {
+            margin-top: 30px;
+          }
+        }
+      }
+      ul {
+        li {
+          flex-basis: 100%;
+        }
+      }
+    }
+  }
+  #report {
+    .report-box {
+      ul {
+        flex-direction: column;
+        justify-content: center;
+        li {
+          margin-bottom: 10px;
+          flex-basis: 100%;
+        }
+      }
+    }
+  }
+  #footer {
+    .address {
+      font-size: 15px;
+    }
+    .sns {
+      .icons {
+        ul {
+          li {
+            a {
+              width: clamp(50px, 6.4vw, 70px);
+              height: clamp(50px, 6.4vw, 70px);
+            }
+            &.flag {
+              margin-left: clamp(10px, 4vw, 50px);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 860px) {
+  #main-visual {
+    height: clamp(350px, 70vw, 600px);
+    .main-box {
+      .search {
+        width: 80%;
+        i {
+          margin-left: clamp(10px, 3.5vw, 30px);
+        }
+        input {
+          font-size: 12px;
+        }
+        button {
+          font-size: 12px;
+          padding: 0 clamp(20px, 5vw, 40px);
+        }
+      }
+      .hot {
+        span {
+          font-size: 10px;
+          padding: clamp(8px, 1.2vw, 10px) clamp(10px, 2.3vw, 20px);
+        }
+      }
+    }
+  }
+  #happy {
+    padding: clamp(10px, 6vw, 50px);
+
+    h2 {
+      padding-top: 10px;
+      font-size: clamp(20px, 4.2vw, 36px);
+    }
+    .happy-slide {
+      li {
+        a {
+          span {
+            padding: 5px 0;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+    .navigation {
+      .nav-prev {
+        left: clamp(10px, 6vw, 50px);
+      }
+      .nav-next {
+        right: clamp(10px, 6vw, 50px);
+      }
+    }
+  }
+  #brand {
+    h2 {
+      font-size: clamp(20px, 4.2vw, 36px);
+    }
+    .brand-slide {
+      width: 70%;
+      li {
+        height: clamp(200px, 30vw, 260px);
+        .img-box {
+          img {
+            width: 80%;
+          }
+          p {
+            font-size: 12px;
+          }
+          a {
+            font-size: 12px;
+            padding: 10px 0;
+            width: 80%;
+          }
+        }
+      }
+    }
+    .brand-navigation {
+      .nav-prev {
+        left: clamp(10px, 6vw, 50px);
+      }
+      .nav-next {
+        right: clamp(10px, 6vw, 50px);
+      }
+    }
+  }
+  #complain {
+    padding: clamp(30px, 11.6vw, 100px) 0;
+    h2 {
+      font-size: clamp(20px, 4.2vw, 36px);
+    }
+    .contents-box {
+      padding: clamp(10px, 4vw, 50px);
+      .contents {
+        .txt {
+          padding: clamp(0px, 3vw, 50px) clamp(0px, 4vw, 50px);
+          h2 {
+            font-size: clamp(15px, 3.5vw, 30px);
+            margin-bottom: clamp(20px, 4.6vw, 40px);
+          }
+          p {
+            font-size: clamp(10px, 1.8vw, 16px);
+          }
+          .phone-number {
+            font-size: clamp(20px, 4.1vw, 36px);
+          }
+        }
+        .mail-box {
+          span {
+            display: none;
+          }
+        }
+      }
+      .question {
+        h3 {
+          font-size: clamp(15px, 2vw, 18px);
+          line-height: 1.3;
+        }
+        a {
+          font-size: clamp(12px, 1.8vw, 16px);
+        }
+      }
+      ul {
+        li {
+          font-size: clamp(12px, 2vw, 18px);
+
+          padding: clamp(10px, 3.4vw, 30px);
+        }
+      }
+    }
+  }
+  #report {
+    padding: clamp(10px, 6vw, 50px) 0;
+    h2 {
+      padding-top: 10px;
+      font-size: clamp(20px, 4.2vw, 36px);
+    }
+    .report-box {
+      ul {
+        li {
+          text-align: center;
+          line-height: 2;
+          word-break: keep-all;
+          font-size: clamp(12px, 2vw, 18px);
+          a {
+            span {
+              padding: clamp(10px, 1.5vw, 13px) 0;
+              width: clamp(150px, 21vw, 180px);
+              font-size: clamp(14px, 1.8vw, 16px);
+            }
+          }
+        }
+      }
+    }
+  }
+  #footer {
+    .address {
+      flex-direction: column-reverse;
+      text-align: center;
+
+      .map {
+        color: #555;
+        font-weight: 700;
+        margin-bottom: 50px;
+      }
+      p {
+        font-size: clamp(12px, 1.7vw, 15px);
+        word-break: keep-all;
+      }
+    }
+    .sns {
+      flex-direction: column-reverse;
+      text-align: center;
+      margin-top: clamp(20px, 11.6vw, 100px);
+      .copyright {
+        font-size: clamp(12px, 1.6vw, 14px);
+        margin-top: 10px;
+      }
+      .icons {
+        ul {
+          justify-content: center;
+          flex-wrap: wrap;
+          li {
+            margin-bottom: 15px;
           }
         }
       }

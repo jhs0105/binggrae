@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
     <title>빙그레</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -136,7 +139,7 @@
       <div class="menuslide">
         <ul>
           <li>
-            회사소개
+            <a href="" class="menu-depth01">회사소개</a>
             <ul class="depth02">
               <li><a href="">CEO인사말</a></li>
               <li><a href="">경영이념</a></li>
@@ -145,7 +148,7 @@
             </ul>
           </li>
           <li>
-            제품소개
+            <a href="" class="menu-depth01">제품소개</a>
             <ul class="depth02">
               <li><a href="">아이스크림</a></li>
               <li><a href="">우유/치즈</a></li>
@@ -159,7 +162,7 @@
             </ul>
           </li>
           <li>
-            지속가능경영
+            <a href="" class="menu-depth01">지속가능경영</a>
             <ul class="depth02">
               <li><a href="">지속가능경영 체계</a></li>
               <li><a href="">Eco-Friendly</a></li>
@@ -171,7 +174,7 @@
             </ul>
           </li>
           <li>
-            투자정보
+            <a href="" class="menu-depth01">투자정보</a>
             <ul class="depth02">
               <li><a href="">재무정보</a></li>
               <li><a href="">주식정보</a></li>
@@ -181,7 +184,7 @@
             </ul>
           </li>
           <li>
-            뉴스룸
+            <a href="" class="menu-depth01">뉴스룸</a>
             <ul class="depth02">
               <li><a href="">새소식</a></li>
               <li><a href="">보도자료</a></li>
@@ -195,7 +198,7 @@
             </ul>
           </li>
           <li>
-            고객센터
+            <a href="" class="menu-depth01">고객센터</a>
             <ul class="depth02">
               <li><a href="">고객상담</a></li>
               <li><a href="">제품공급문의</a></li>
@@ -431,18 +434,21 @@
     </div>
     <footer id="footer">
       <div class="address">
-        <img src="../images/f_logo.png" alt="" />
-        <p>
-          회사명: 빙그래 <br />
-          경기도 남양주시 다산동 4344-3 / 경기도 남양주시 다산순환로 45(다산동)
-        </p>
-        <div class="copyright">ⓒ Binggrae all rights reserved.</div>
-      </div>
-      <div class="sns">
+        <div class="address-box">
+          <img src="../images/f_logo.png" alt="" />
+          <p>
+            회사명: 빙그래 <br />
+            경기도 남양주시 다산동 4344-3 / 경기도 남양주시 다산순환로
+            45(다산동)
+          </p>
+        </div>
         <div class="map">
           <a href="">개인정보처리방침</a>
           <a href="">오시는길</a>
         </div>
+      </div>
+      <div class="sns">
+        <div class="copyright">ⓒ Binggrae all rights reserved.</div>
         <div class="icons">
           <ul>
             <li>
@@ -468,6 +474,9 @@
         </div>
       </div>
     </footer>
+    <aside class="topBtn">
+      <i class="fa-solid fa-arrow-up"></i>
+    </aside>
   </body>
   <script>
     const btnAll = $(".btn-all");
@@ -476,11 +485,19 @@
     const menuSlide = $(".menuslide");
     const trans = $(".trans");
     const transList = $(".trans ul");
-    console.log(trans.children()[1]);
+    const topBtn = $(".topBtn");
+    const depth01 = $(".menuslide .menu-depth01");
+
+    //console.log(trans.children()[1]);
     btnAll.on("click", function () {
       $(this).toggleClass("on");
       nav.toggleClass("on");
       menuSlide.toggleClass("on");
+      if ($("html").hasClass("m")) {
+        header.removeClass("on");
+        depth01.next().slideUp();
+        depth01.removeClass("on");
+      }
     });
     trans.on("click", () => {
       console.log("click");
@@ -495,7 +512,7 @@
     });
 
     const happy = new Swiper("#happy .happy-slide", {
-      slidesPerView: 6,
+      slidesPerView: 2,
       spaceBetween: 20,
       allowTouchMove: false,
       loop: true,
@@ -503,16 +520,85 @@
         nextEl: ".navigation .nav-next",
         prevEl: ".navigation .nav-prev",
       },
+      breakpoints: {
+        860: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        },
+        1080: {
+          slidesPerView: 6,
+          spaceBetween: 30,
+        },
+      },
     });
     const brand = new Swiper("#brand .brand-slide", {
-      slidesPerView: 6,
-      spaceBetween: 20,
+      slidesPerView: 2,
+      spaceBetween: 30,
       allowTouchMove: false,
       loop: true,
       navigation: {
         nextEl: ".brand-navigation .nav-next",
         prevEl: ".brand-navigation .nav-prev",
       },
+      breakpoints: {
+        860: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        },
+        1080: {
+          slidesPerView: 5,
+          spaceBetween: 20,
+        },
+        1400: {
+          slidesPerView: 6,
+          spaceBetween: 20,
+        },
+      },
+    });
+
+    $(window).on("scroll", () => {
+      if ($(window).scrollTop() > 50) {
+        header.addClass("on");
+      } else {
+        header.removeClass("on");
+      }
+      if ($(window).scrollTop() > 150) {
+        topBtn.addClass("show");
+      } else {
+        topBtn.removeClass("show");
+      }
+      if ($("html").hasClass("m")) {
+        menuSlide.removeClass("on");
+        btnAll.removeClass("on");
+      }
+    });
+    topBtn.on("click", () => {
+      gsap.to(window, { duration: 1, scrollTo: 10 });
+    });
+    removeEventListener;
+
+    $(window).on("resize", () => {
+      const w = $(window).outerWidth();
+      if (w > 1080) {
+        $("html").addClass("pc").removeClass("m");
+      } else {
+        $("html").addClass("m").removeClass("pc");
+      }
+    });
+
+    $(window).trigger("resize");
+
+    depth01.on("click", function (e) {
+      if ($("html").hasClass("m")) {
+        const depth02 = $(this).next();
+        const siblings = $(this).parent().siblings().find(".depth02");
+        siblings.slideUp();
+        if (depth02.length > 0) {
+          e.preventDefault();
+          depth02.slideToggle();
+          $(this).toggleClass("on");
+        }
+      }
     });
   </script>
 </html>

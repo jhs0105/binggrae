@@ -52,9 +52,13 @@ input {
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
-  padding: 0 50px;
+  padding: 0 30px;
   height: 120px;
   transition: all 0.5s ease;
+  &.on {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+  }
   &.slideDown {
     background-color: #fff;
     box-shadow: 0 0 10px rgba(1, 1, 1, 0.1);
@@ -131,13 +135,14 @@ input {
         padding: 10px;
         margin-top: 10px;
         border-radius: 20px;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
         li {
           line-height: 1.5;
         }
       }
     }
     .btn-all {
-      width: 50px;
+      width: 30px;
       height: 50px;
       position: relative;
       margin-left: 40px;
@@ -178,6 +183,7 @@ input {
   .menuslide {
     &.on {
       display: block;
+      background-color: #fff;
     }
     display: none;
     position: absolute;
@@ -190,7 +196,6 @@ input {
     height: 100vh;
     top: 0;
     left: 0;
-
     > ul {
       width: 100%;
       height: 100%;
@@ -211,11 +216,7 @@ input {
         font-size: 20px;
         font-weight: 700;
         transition: all 0.25s ease;
-        &:hover {
-          box-shadow: 0px 0px 10px 2px rgba(1, 1, 1, 0.2);
-          transform: translateY(-10px);
-          color: #f00;
-        }
+
         .depth02 {
           font-size: 16px;
           color: #333;
@@ -225,6 +226,140 @@ input {
             line-height: 2;
           }
         }
+      }
+    }
+  }
+}
+
+.topBtn {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  background-color: #111;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  z-index: 99;
+  i {
+    color: #fff;
+  }
+  &.show {
+    opacity: 1;
+  }
+}
+
+@media all and (min-width: 1080px) {
+  #header {
+    .menuslide {
+      > ul {
+        > li {
+          &:hover {
+            box-shadow: 0px 0px 10px 2px rgba(1, 1, 1, 0.2);
+            transform: translateY(-10px);
+            color: #f00;
+          }
+        }
+      }
+    }
+  }
+}
+@media all and (max-width: 1080px) {
+  #header {
+    height: 100px;
+    h1 {
+      height: 100px;
+      position: relative;
+      z-index: -2;
+    }
+    #util {
+      height: 100px;
+    }
+    nav {
+      display: none;
+    }
+    .menuslide {
+      box-shadow: 0px 0px 1000px 1000px rgba(1, 1, 1, 0.2);
+      width: 50%;
+      position: absolute;
+      right: 0;
+      left: auto;
+      background-image: none;
+      border-radius: 50px 0 0 0;
+      background-color: #fff;
+      > ul {
+        flex-direction: column;
+        justify-content: start;
+        padding: 0;
+        margin-top: 100px;
+        border-top: 1px solid#ccc;
+        padding-top: 10px;
+        > li {
+          font-size: 18px;
+          display: flex;
+          flex-direction: column;
+          border-radius: 0;
+          width: 100%;
+          height: auto;
+          border: none;
+          padding: 0;
+          margin: 0;
+
+          > a {
+            padding: 15px 30px;
+            position: relative;
+            &:before {
+              content: "\f107";
+              font-family: "FontAwesome";
+              position: absolute;
+              right: 20px;
+              font-size: 16px;
+            }
+            &.on {
+              &:before {
+                transform: rotate(180deg);
+              }
+            }
+          }
+          .depth02 {
+            padding: 5px 30px;
+            background-color: #f7f7f7;
+            color: #555;
+            display: none;
+            li {
+              font-size: 15px;
+              &:hover {
+                color: #f00;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media all and (max-width: 860px) {
+  #header {
+    height: 80px;
+    h1 {
+      height: 80px;
+      img {
+        height: 30px;
+      }
+    }
+    #util {
+      height: 80px;
+    }
+    nav {
+      display: none;
+    }
+    .menuslide {
+      width: 80%;
+      > ul {
+        margin-top: 80px;
       }
     }
   }
